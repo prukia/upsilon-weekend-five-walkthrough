@@ -12,19 +12,27 @@
   <body ng-app="gifApp">
     <main ng-controller="SearchController as search">
       <a href="/faves">Favorites</a>
+<!--
+      focused on functionality of getting random gif -->
       <section>
         <button ng-click="search.random()">Random</button>
         <form ng-submit="search.search()">
           <input ng-model="search.q" type="text" placeholder="Search" />
           <input type="submit"/>
         </form>
+        {{search.q}}
       </section>
 
+
       <section>
+        {{search.results}}
+        <!-- all the info is containd withing this particular object -->
          <div ng-repeat="g in search.results" >
            <img ng-src={{g.url}} alt="Image of {{g.url}}"/>
            <input ng-model="g.comment" type="text" placeholder="Comment" />
+           <!-- search controller calling the function and pass the g object -->
            <button ng-click="search.createFavorite(g)">Favorite!</button>
+
          </div>
       </section>
     </main>

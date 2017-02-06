@@ -13,7 +13,9 @@ angular.module("gifApp").controller("SearchController", [
     };
 
     this.search = function() {
-      GiphyService.search(this.q).then(function(gifs) {
+      GiphyService.search(vm.q).then(function(gifs) {
+        //map function will apply a transformation on each item of array
+        //for each element inside the list create a prop called urls
         vm.results = gifs.map(function(gif) {
           return { url: gif.images.fixed_height.url };
         });
